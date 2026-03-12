@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANACONDA ARCHITECTS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700;900&display=swap');
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #000;
+            color: #000;
+        }
+
+        .logo-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Deep metallic gradient with black base */
+        .metallic {
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d, #222);
+            box-shadow: 
+                inset 0 3px 10px rgba(255,255,255,0.12),
+                inset 0 -3px 10px rgba(0,0,0,0.8),
+                0 15px 30px rgba(0,0,0,0.7);
+            transition: all 0.4s ease;
+        }
+
+        .metallic:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                inset 0 5px 15px rgba(255,255,255,0.18),
+                inset 0 -5px 15px rgba(0,0,0,0.9),
+                0 25px 50px rgba(0,0,0,0.8);
+        }
+
+        /* Sparkle shine on buttons */
+        .sparkle-btn {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(90deg, #111 0%, #222 50%, #111 100%);
+            color: #000;
+            font-weight: 700;
+        }
+
+        .sparkle-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -100%;
+            width: 50%;
+            height: 200%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.9),
+                rgba(255,255,255,0.4),
+                transparent
+            );
+            transform: skewX(-25deg);
+            transition: left 0.8s ease;
+        }
+
+        .sparkle-btn:hover::before {
+            left: 150%;
+        }
+
+        /* Black bold text with subtle metallic outline */
+        .black-metallic {
+            color: #000;
+            -webkit-text-stroke: 0.5px #444;
+            text-shadow: 
+                0 0 10px rgba(255,255,255,0.15),
+                0 0 25px rgba(16,185,129,0.08);
+        }
+
+        .logo-text {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: -4px;
+            color: #000;
+            -webkit-text-stroke: 1.2px #10b981;
+            text-shadow: 0 0 30px rgba(16,185,129,0.4);
+        }
+
+        /* Sparkle particles */
+        .sparkles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .sparkle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkleAnim 3s infinite;
+            box-shadow: 0 0 8px white;
+        }
+
+        @keyframes sparkleAnim {
+            0%   { transform: translateY(100%) scale(0); opacity: 0; }
+            20%  { opacity: 0.9; }
+            50%  { transform: translateY(-120%) scale(0.6); opacity: 0.6; }
+            100% { transform: translateY(-300%) scale(0); opacity: 0; }
+        }
+
+        /* Anaconda with more glow */
+        .anaconda-glow {
+            filter: drop-shadow(0 0 25px #10b981) drop-shadow(0 0 50px #064e3b);
+        }
+
+        .section-title {
+            font-size: 5.5rem;
+            font-weight: 900;
+            color: #000;
+            -webkit-text-stroke: 1px #10b981;
+            text-shadow: 0 0 40px rgba(16,185,129,0.25);
+        }
+
+        .hero-bg {
+            background: radial-gradient(circle at 20% 30%, #0a0a0a 0%, #000 70%);
+        }
+    </style>
+</head>
+<body class="text-black overflow-x-hidden relative">
+
+    <!-- Sparkle background (global subtle effect) -->
+    <div class="fixed inset-0 pointer-events-none z-[-1]">
+        <div class="sparkles" id="global-sparkles"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-xl border-b border-zinc-900/50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between">
+            <div class="flex items-center gap-5">
+                <svg width="60" height="60" viewBox="0 0 200 180" class="anaconda-glow" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 120 Q35 80 70 50 Q120 40 145 80 Q175 120 150 150 Q110 170 65 135" 
+                          stroke="#10b981" stroke-width="32" stroke-linecap="round"/>
+                    <path d="M50 120 Q35 80 70 50 Q120 40 145 80 Q175 120 150 150" 
+                          stroke="#064e3b" stroke-width="16" stroke-linecap="round"/>
+                    <ellipse cx="165" cy="140" rx="25" ry="20" transform="rotate(-40 165 140)" fill="#10b981"/>
+                </svg>
+                <div>
+                    <div class="logo-text">ANACONDA</div>
+                    <div class="text-xs tracking-[6px] text-zinc-500 -mt-2 font-bold">ARCHITECTS</div>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-12 text-lg font-semibold">
+                <a href="#home" class="hover:text-emerald-400 transition-colors">HOME</a>
+                <a href="#about" class="hover:text-emerald-400 transition-colors">ABOUT</a>
+                <a href="#projects" class="hover:text-emerald-400 transition-colors">PROJECTS</a>
+                <a href="#contact" class="hover:text-emerald-400 transition-colors">CONTACT</a>
+            </div>
+
+            <button class="sparkle-btn metallic px-10 py-4 rounded-2xl text-lg font-bold border border-emerald-900/50">
+                GET IN TOUCH
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-32 relative overflow-hidden">
+        <div class="sparkles" id="hero-sparkles"></div>
+
+        <div class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="md:col-span-7">
+                <h1 class="section-title leading-none mb-8">
+                    WE BUILD<br>LIKE THE<br>ANACONDA
+                </h1>
+
+                <p class="text-2xl text-zinc-300 max-w-xl font-light tracking-wide">
+                    Structures forged in black titanium and emerald steel —<br>
+                    powerful, fluid, eternal.
+                </p>
+
+                <div class="mt-12 flex flex-wrap gap-6">
+                    <button class="sparkle-btn metallic px-12 py-6 rounded-3xl text-xl font-bold border border-emerald-800/60">
+                        VIEW PROJECTS
+                    </button>
+                    <a href="#about" class="px-12 py-6 rounded-3xl border-2 border-zinc-700 hover:border-emerald-500 text-xl font-semibold transition-all">
+                        DISCOVER MORE
+                    </a>
+                </div>
+            </div>
+
+            <div class="md:col-span-5 flex justify-center">
+                <svg width="480" height="480" viewBox="0 0 420 420" class="anaconda-glow drop-shadow-2xl" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M130 320 Q90 240 160 160 Q250 110 330 180 Q390 270 320 350 Q230 400 150 340" 
+                          stroke="#10b981" stroke-width="70" stroke-linecap="round"/>
+                    <path d="M130 320 Q90 240 160 160 Q250 110 330 180 Q390 270 320 350" 
+                          stroke="#064e3b" stroke-width="35" stroke-linecap="round"/>
+                    <ellipse cx="335" cy="345" rx="50" ry="35" transform="rotate(-50 335 345)" fill="#10b981"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-40 bg-black border-t border-zinc-900/50">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h2 class="section-title text-center mb-20">THE FIRM</h2>
+
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="text-xl text-zinc-200 leading-relaxed max-w-2xl mx-auto">
+                        Anaconda Architects creates buildings that move like living metal —  
+                        coiled strength wrapped in reflective black titanium and emerald sheen.  
+                        Every structure is designed to dominate, endure, and hypnotize.
+                    </p>
+
+                    <div class="mt-16 flex justify-center gap-16 text-center">
+                        <div>
+                            <div class="text-6xl font-black text-emerald-400">39</div>
+                            <div class="text-sm tracking-widest text-zinc-500 mt-2">ICONIC STRUCTURES</div>
+                        </div>
+                        <div>
+                            <div class="text-6xl font-black text-emerald-400">100%</div>
+                            <div class="text-sm tracking-widest text-zinc-500 mt-2">METALLIC DNA</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative rounded-3xl overflow-hidden border border-zinc-900">
+                    <img src="https://picsum.photos/id/237/1200/800" alt="Dark metallic architecture" class="grayscale-[0.6] hover:grayscale-0 transition-all duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple sparkle generator -->
+    <script>
+        function createSparkle(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            for (let i = 0; i < 30; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.width = `${Math.random() * 3 + 1}px`;
+                sparkle.style.height = sparkle.style.width;
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.top = `${Math.random() * 120}%`;
+                sparkle.style.animationDelay = `${Math.random() * 3}s`;
+                sparkle.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                container.appendChild(sparkle);
+            }
+        }
+
+        // Create sparkles in hero and globally
+        createSparkle('hero-sparkles');
+        createSparkle('global-sparkles');
+
+        // More sparkles on button hover
+        document.querySelectorAll('.sparkle-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                for (let i = 0; i < 8; i++) {
+                    const s = document.createElement('div');
+                    s.className = 'sparkle';
+                    s.style.width = '3px';
+                    s.style.height = '3px';
+                    s.style.left = `${Math.random() * 100}%`;
+                    s.style.top = `${Math.random() * 100}%`;
+                    s.style.animationDuration = '1s';
+                    btn.appendChild(s);
+                    setTimeout(() => s.remove(), 1500);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
